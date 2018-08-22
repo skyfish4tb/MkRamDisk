@@ -54,6 +54,8 @@ ShellAppMain (
     EFI_FILE_HANDLE          FileHandle;
     EFI_FILE_INFO            *FileInfo;
     UINTN                    ReadSize;
+    CHAR16	  		              *CmdLine=L"map -r";
+	   EFI_STATUS           	  CmdStatus;
     
     
     if (Argc < 2) {
@@ -131,6 +133,8 @@ ShellAppMain (
     }      
   
     Print(L"Creat Ram Disk success!\n");
+    
+    Status = ShellExecute( &gImageHandle, CmdLine, FALSE, NULL, &CmdStatus);
 
     return EFI_SUCCESS;
 }
